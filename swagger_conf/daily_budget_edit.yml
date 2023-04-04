@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/dailybudgetedit":
+    post:
+tags:
+  - campaigns
+summary: "Изменение дневного бюджета кампании"
+description: "Метод для изменения дневного бюджета кампании"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      advert_id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор РК, у которой меняется бюджет
+      daily_budget:
+        type: "integer"
+        example: 800
+        description: Сумма дневного бюджета. Значение должно быть больше 500 или равно 0 в случае, если бюджет не установлен
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

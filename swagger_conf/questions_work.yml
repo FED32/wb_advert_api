@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbquestions/questionswork":
+    post:
+tags:
+  - questions
+summary: "Работа с вопросами"
+description: "Метод позволяет просмотреть вопрос, отклонить вопрос, ответить на вопрос."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      question_id:
+        type: "string"
+        example: "2neBtX4B2I0UoornoqG"
+        description: Id вопроса
+      action:
+        type: "string"
+        example: "viewed"
+        enum:
+          - "viewed"
+          - "declined"
+          - "answered"
+        description: Действие. viewed - Просмотреть вопрос. declined - Отклонить вопрос. answered - Ответить на вопрос.
+      was_viewed:
+        type: "string"
+        example: "true"
+        enum:
+          - "true"
+          - "false"
+        description: Для действия viewed. Просмотрен (true), не просмотрен (false).
+      answer:
+        type: "string"
+        example: "some text"
+        description: Для действий declined, answered. Текст ответа.
+      state:
+        type: "string"
+        example: "wbRu"
+        description: Для действий declined. Статус вопроса (none) - вопрос отклонён продавцом (такой вопрос не отображается на портале покупателей). Для действий answered. Статус вопроса (wbRu) - ответ предоставлен, вопрос отображается на сайте покупателей.
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

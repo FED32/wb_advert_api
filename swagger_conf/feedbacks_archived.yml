@@ -1,0 +1,59 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbfeedbacks/feedbacksarchived":
+    post:
+tags:
+  - feedbacks
+summary: "Список архивных отзывов"
+description: "Метод позволяет получить список архивных отзывов. Отзыв становится архивным если на него предоставлен ответ или ответ не предоставлен в течение 30 дней со дня его публикации."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      take:
+        type: "integer"
+        example: 1000
+        description: Количество отзывов
+      skip:
+        type: "integer"
+        example: 0
+        description: Количество отзывов для пропуска
+      nm_id:
+        type: "integer"
+        example: 5870243
+        description: Числовой идентификатор номенклатуры Wildberries (не обязательно)
+      order:
+        type: "string"
+        example: "dateDesc"
+        enum:
+          - "dateDesc"
+          - "dateAsc"
+        description: Сортировка отзывов по дате (dateAsc/dateDesc)
+      has_supplier_complaint:
+        type: string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Отзывы с жалобой продавца(true) или без жалобы(false)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

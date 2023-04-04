@@ -1,0 +1,65 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/camplist":
+    post:
+tags:
+  - campaigns
+summary: "Получить список рекламных кампаний"
+description: "Метод для получения списка рекламных кампаний продавца"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      status:
+        type: "integer"
+        example: 9
+        description: Статус РК 7 - РК завершена, 9 - идут показы, 11 - РК на паузе
+        enum:
+          - 7
+          - 9
+          - 11
+      type:
+        type: "integer"
+        example: 4
+        description: Тип РК 4 - реклама в каталоге, 5 - реклама в карточке товара, 6 - реклама в поиске, 7 - реклама в рекомендациях на главной странице
+        enum:
+          - 4
+          - 5
+          - 6
+          - 7
+      order:
+        type: "string"
+        example: "create"
+        description: Порядок create (по времени создания РК), change (по времени последнего изменения РК), id (по идентификатору РК)
+        enum:
+          - "create"
+          - "change"
+          - "id"
+      direction:
+        type: "string"
+        example: "asc"
+        enum:
+          - "desc"
+          - "asc"
+        description: Направление desc (от большего к меньшему), asc (от меньшего к большему)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

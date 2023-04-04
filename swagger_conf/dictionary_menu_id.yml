@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/dictsubjectid":
+    post:
+tags:
+  - campaigns
+summary: "Словарь значений параметра menuId"
+description: "Метод для получения словаря значений параметра menuId"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор меню, где размещается РК (для РК в каталоге). Принимает значение параметра menuId из РК. При пустом параметре вернётся весь список существующих значений.
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

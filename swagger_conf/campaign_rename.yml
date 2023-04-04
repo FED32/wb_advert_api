@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/campaignrename":
+    post:
+tags:
+  - campaigns
+summary: "Переименование кампании"
+description: "Метод для переименования кампании"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      advert_id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор РК, у которой меняется название
+      name:
+        type: "string"
+        example: "new name"
+        description: Новое название (максимум 100 символов)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbfeedbacks/productsratingtop":
+    post:
+tags:
+  - feedbacks
+summary: "Товары с наибольшей и наименьшей средней оценкой по родительской категории"
+description: "Метод позволяет получить список из двух товаров, с наибольшей и наименьшей средней оценкой, по родительской категории."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      subject_id:
+        type: "integer"
+        example: 3109
+        description: id категории товара
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbquestions/prodrating":
+    post:
+tags:
+  - questions
+summary: "Часто спрашиваемые товары"
+description: "Метод позволяет получить товары, про которые чаще всего спрашивают."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      size:
+        type: "integer"
+        example: 1
+        description: Количество запрашиваемых товаров (max. 100)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

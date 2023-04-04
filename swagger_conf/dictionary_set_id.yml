@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/dictsubjectid":
+    post:
+tags:
+  - campaigns
+summary: "Словарь значений параметра setId"
+description: "Метод для получения словаря значений параметра setId"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор сочетания предмета и пола (для РК в карточке товара). Принимает значение параметра setId из РК. При пустом параметре вернётся весь список существующих значений.
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

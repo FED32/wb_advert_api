@@ -1,0 +1,53 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/bidsedit":
+    post:
+tags:
+  - campaigns
+summary: "Изменение ставки кампании"
+description: "Метод для изменения ставки кампании. Доступно для РК в карточке товара, поиске или рекомендациях"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      campaign_id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор РК, где меняется ставка
+      type:
+        type: "integer"
+        example: 5
+        description: Тип РК, где меняется ставка. 5 - реклама в карточке товара, 6 - реклама в поиске, 7 - реклама в рекомендациях на главной странице
+        enum:
+          - 5
+          - 6
+          - 7
+      cpm:
+        type: "integer"
+        example: 1000000
+        description: Новое значение ставки
+      param:
+        type: "integer"
+        example: 1234
+        description: Параметр, для которого будет внесено изменение (является значением subjectId или setId в зависимости от типа РК)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

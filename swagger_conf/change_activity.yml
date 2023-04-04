@@ -1,0 +1,45 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/changeactivity":
+    post:
+tags:
+  - campaigns
+summary: "Изменение активности предметной группы для кампании в поиске"
+description: "Метод для изменения активности предметной группы для кампании в поиске"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор РК
+      subject_id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор предметной группы, для которой меняется активность
+      status:
+        type: "integer"
+        example: 1234
+        description: Новое состояние (true - сделать группу активной или false - сделать группу неактивной)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

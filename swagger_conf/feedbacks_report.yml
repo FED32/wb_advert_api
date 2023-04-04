@@ -1,0 +1,49 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbfeedbacks/feedbacksreport":
+    post:
+tags:
+  - feedbacks
+summary: "Получение отзывов в формате XLSX"
+description: "Метод позволяет получить XLSX файл с отзывами в кодировке BASE64."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      is_answered:
+         type: "string"
+         example: "false"
+         enum:
+           - "true"
+           - "false"
+         description: Необработанный(false) или в архиве(true)
+      has_supplier_complaint:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Отзывы с жалобой продавца(true) или без жалобы(false)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

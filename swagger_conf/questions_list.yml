@@ -1,0 +1,61 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbquestions/questionslist":
+    post:
+tags:
+  - questions
+summary: "Список вопросов"
+description: "Метод позволяет получить список вопросов по заданным параметрам с пагинацией и сортировкой."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      is_answered:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Отвеченные вопросы (true) или неотвеченные вопросы(false)
+      take:
+        type: "integer"
+        example: 1000
+        description: Количество вопросов (max. 10 000)
+      skip:
+        type: "integer"
+        example: 0
+        description: Количество вопросов для пропуска
+      nm_id:
+        type: "integer"
+        example: 151222870
+        description: Числовой идентификатор номенклатуры Wildberries (не обязательно)
+      order:
+        type: "string"
+        example: "dateDesc"
+        enum:
+          - "dateDesc"
+          - "dateAsc"
+        description: Сортировка вопросов по дате
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

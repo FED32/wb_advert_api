@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbfeedbacks/feedbackswork":
+    post:
+tags:
+  - feedbacks
+summary: "Работа с отзывом"
+description: "Метод позволяет просмотреть отзыв, ответить на отзыв, создать жалобу на отзыв."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      feedback_id:
+        type: "string"
+        example: "2neBtX4B2I0UoornoqG"
+        description: Id отзыва
+      action:
+        type: "string"
+        example: "viewed"
+        enum:
+          - "viewed"
+          - "answered"
+          - "complained"
+        description: Действие. viewed - Просмотреть отзыв. answered - Ответить на отзыв. complained - Создать жалобу на отзыв.
+      was_viewed:
+        type: "string"
+        example: "true"
+        enum:
+          - "true"
+          - "false"
+        description: Для действия viewed. Просмотрен (true), не просмотрен (false).
+      answer_text:
+        type: "string"
+        example: "some text"
+        description: Для действия answered. Текст ответа
+      create_supplier_complaint:
+        type: "string"
+        example: "true"
+        description: Для действия complained. Создать жалобу (true).
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

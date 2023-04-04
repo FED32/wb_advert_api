@@ -1,0 +1,46 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/bidslist":
+    post:
+tags:
+  - campaigns
+summary: "Список ставок для типа размещения"
+description: "Метод для получения списка ставок для метода размещения"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      type:
+        type: "integer"
+        example: 4
+        description: Тип РК 4 - реклама в каталоге, 5 - реклама в карточке товара, 6 - реклама в поиске, 7 - реклама в рекомендациях на главной странице
+        enum:
+          - 4
+          - 5
+          - 6
+          - 7
+      param:
+        type: "integer"
+        example: 1234
+        description: Параметр запроса, по которому будет получен список ставок активных РК. Должен быть значением menuId, subjectId или setId в зависимости от типа РК.
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

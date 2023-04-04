@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/campaignstop":
+    post:
+tags:
+  - campaigns
+summary: "Завершить кампанию"
+description: "Метод для завершения рекламной кампании"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      campaign_id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор РК
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

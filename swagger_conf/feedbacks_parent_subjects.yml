@@ -1,0 +1,35 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbfeedbacks/parentsubjects":
+    post:
+tags:
+  - feedbacks
+summary: "Родительские категории товаров"
+description: "Метод позволяет получить список родительских категорий товаров, которые есть у продавца."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

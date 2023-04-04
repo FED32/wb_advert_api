@@ -1,0 +1,55 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbadvert/intervalsedit":
+    post:
+tags:
+  - campaigns
+summary: "Изменение интервалов показа кампании"
+description: "Метод для изменения интервалов показа кампании"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+      advert_id:
+        type: "integer"
+        example: 1234
+        description: Идентификатор РК
+      intervals_begin:
+        type:
+          - array
+            - integer
+        example: [2, 15, 22]
+        description: Время начала показов, по 24 часовой схеме
+      intervals_end:
+        type:
+          - array
+            - integer
+        example: [4, 19, 24]
+        description: Время окончания показов, по 24 часовой схеме
+      param:
+        type: "integer"
+        example: 275
+        description: Параметр, для которого будет внесено изменение, должен быть значением menuId (для РК в каталоге), subjectId (для РК в поиске и рекомендациях) или setId (для РК в карточке товара)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
+

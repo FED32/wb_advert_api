@@ -1,0 +1,33 @@
+swagger: "2.0"
+info:
+  title: "Wildberries advert Ecom API documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/wbfeedbacks/unanswered":
+    post:
+tags:
+  - feedbacks
+summary: "Необработанные отзывы"
+description: "Метод позволяет получить количество необработанных отзывов за сегодня, за всё время, и среднюю оценку всех отзывов."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        example: "xYcUsddPPsadwdwqdlKJHbgCF"
+        description: ключ API
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
